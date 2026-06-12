@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import csv
 import io
+import os
+import re
 import sys
 
 import numpy as np
@@ -11,6 +13,14 @@ import rasterio
 import requests
 from pyproj import Transformer
 
+# Folder of saved ArcGIS Map Viewer snapshots, one HTML file per date named
+# "<date>.html" (e.g. snapshot/2008-10-01.html). For each date in DATES the loop
+# loads the matching snapshot and derives the layer/service from it, instead of
+# using a hardcoded service URL.
+SNAPSHOT_DIR = "snapshot"
+
+# Fallback service URL, used only if a snapshot does not reference a resolvable
+# portal item / service.
 SERVICE_URL = (
     "https://gis.odf.oregon.gov/ags3/rest/services/"
     "LandUseLandCover/LULC_Willamette_Valley_Hardwood/ImageServer"
@@ -87,10 +97,74 @@ def export_size(xmin: float, ymin: float, xmax: float, ymax: float) -> tuple[int
 
 
 # --------------------------------------------------------------------------- #
+# Snapshot resolution
+# --------------------------------------------------------------------------- #
+
+# Matches the "saved from url" comment in a saved Map Viewer page, capturing the
+# portal host and the 32-char portal item id from `...?layers=<itemid>`.
+_SNAPSHOT_SRC_RE = re.compile(
+    r"(https?://[^/\s]+)/apps/mapviewer/index\.html\?layers=([0-9a-fA-F]{32})"
+)
+
+# Cache of portal item id -> resolved service URL, to avoid repeat lookups.
+_SERVICE_URL_CACHE: dict[str, str] = {}
+
+
+def snapshot_path_for_date(date: str) -> str:
+    """Return the snapshot file path for a date (snapshot/<date>.html)."""
+    return os.path.join(SNAPSHOT_DIR, f"{date}.html")
+
+
+def service_url_from_snapshot(path: str) -> str:
+    """Derive the Image Service URL referenced by a saved Map Viewer snapshot.
+
+    Reads the portal host and item id from the snapshot's "saved from url" comment,
+    then resolves the item to its service URL via the portal item endpoint. Falls
+    back to the module-level SERVICE_URL if anything cannot be resolved.
+    """
+    with open(path, "r", encoding="utf-8", errors="ignore") as fh:
+        # The reference lives in a comment near the top of the file.
+        head = fh.read(8192)
+
+    match = _SNAPSHOT_SRC_RE.search(head)
+    if not match:
+        print(
+            f"  ! no portal item reference found in {path}; using fallback SERVICE_URL",
+            file=sys.stderr,
+        )
+        return SERVICE_URL
+
+    portal_host, item_id = match.group(1), match.group(2)
+    if item_id in _SERVICE_URL_CACHE:
+        return _SERVICE_URL_CACHE[item_id]
+
+    item_url = f"{portal_host}/sharing/rest/content/items/{item_id}"
+    try:
+        resp = requests.get(
+            item_url, params={"f": "json"}, timeout=REQUEST_TIMEOUT
+        )
+        resp.raise_for_status()
+        service_url = resp.json().get("url")
+    except Exception as exc:  # noqa: BLE001 - fall back and report
+        print(
+            f"  ! failed to resolve item {item_id} from {portal_host}: {exc}; "
+            f"using fallback SERVICE_URL",
+            file=sys.stderr,
+        )
+        service_url = None
+
+    if not service_url:
+        service_url = SERVICE_URL
+    _SERVICE_URL_CACHE[item_id] = service_url
+    return service_url
+
+
+# --------------------------------------------------------------------------- #
 # Service access
 # --------------------------------------------------------------------------- #
 
 def export_raw_raster(
+    service_url: str,
     extent: tuple[float, float, float, float],
     size: tuple[int, int],
     date: str,
@@ -113,7 +187,7 @@ def export_raw_raster(
         "f": "image",
     }
     resp = requests.get(
-        f"{SERVICE_URL}/exportImage", params=params, timeout=REQUEST_TIMEOUT
+        f"{service_url}/exportImage", params=params, timeout=REQUEST_TIMEOUT
     )
     resp.raise_for_status()
 
@@ -184,14 +258,20 @@ def main() -> int:
 
     all_rows: list[dict] = []
     for date in DATES:
-        print(f"Querying date {date} ...")
+        snapshot_path = snapshot_path_for_date(date)
+        if not os.path.isfile(snapshot_path):
+            print(f"Skipping {date}: no snapshot at {snapshot_path}")
+            continue
+
+        print(f"Processing {date} from {snapshot_path} ...")
+        service_url = service_url_from_snapshot(snapshot_path)
         try:
-            tiff_bytes = export_raw_raster(extent, size, date)
+            tiff_bytes = export_raw_raster(service_url, extent, size, date)
         except Exception as exc:  # noqa: BLE001 - report and continue other dates
             print(f"  ! failed for {date}: {exc}", file=sys.stderr)
             continue
         rows = raster_to_rows(tiff_bytes, date)
-        print(f"  -> {len(rows)} classified pixels")
+        print(f"  -> {len(rows)} classified pixels (service: {service_url})")
         all_rows.extend(rows)
 
     fieldnames = ["date", "tree_type", "class_value", "latitude", "longitude"]
