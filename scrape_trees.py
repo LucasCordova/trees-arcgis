@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import argparse
 import csv
+import datetime as dt
 import io
 import os
 import re
@@ -14,9 +16,8 @@ import requests
 from pyproj import Transformer
 
 # Folder of saved ArcGIS Map Viewer snapshots, one HTML file per date named
-# "<date>.html" (e.g. snapshot/2008-10-01.html). For each date in DATES the loop
-# loads the matching snapshot and derives the layer/service from it, instead of
-# using a hardcoded service URL.
+# "<date>.html" (e.g. snapshot/2008-10-01.html). scrape_trees reads whatever
+# is in here unless --start/--end/--step pin a subset.
 SNAPSHOT_DIR = "snapshot"
 
 # Fallback service URL, used only if a snapshot does not reference a resolvable
@@ -25,8 +26,6 @@ SERVICE_URL = (
     "https://gis.odf.oregon.gov/ags3/rest/services/"
     "LandUseLandCover/LULC_Willamette_Valley_Hardwood/ImageServer"
 )
-
-DATES = ("2008-10-01", "2009-04-01", "2009-10-01", "2010-04-01", "2010-10-01", "2011-04-01", "2011-10-01", "2012-04-01", "2012-10-01", "2013-04-01", "2013-10-01", "2014-04-01", "2014-10-01", "2015-04-01", "2015-10-01", "2016-04-01", "2016-10-01", "2017-04-01", "2017-10-01", "2018-04-01", "2018-10-01", "2019-04-01", "2019-10-01", "2020-04-01", "2020-10-01", "2021-04-01", "2021-10-01", "2022-04-01", "2022-10-01", "2023-04-01", "2023-10-01", "2024-04-01", "2024-10-01", "2025-04-01", "2025-10-01", "2026-04-01")
 
 BBOX = (-123.045, 44.940, -123.034, 44.949)
 
@@ -244,11 +243,73 @@ def raster_to_rows(tiff_bytes: bytes, date: str) -> list[dict]:
     return rows
 
 
+_DATE_STEM_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+
+def list_snapshot_dates() -> list[str]:
+    """Every YYYY-MM-DD.html in SNAPSHOT_DIR, sorted."""
+    if not os.path.isdir(SNAPSHOT_DIR):
+        return []
+    out: list[str] = []
+    for entry in os.scandir(SNAPSHOT_DIR):
+        if not entry.name.endswith(".html"):
+            continue
+        stem = entry.name[: -len(".html")]
+        if _DATE_STEM_RE.fullmatch(stem):
+            out.append(stem)
+    return sorted(out)
+
+
+def dates_for_run(
+    start: dt.date | None,
+    end: dt.date | None,
+    step_days: int | None,
+) -> list[str]:
+    """Explicit --start/--end/--step range, or every snapshot/*.html on disk."""
+    if start is not None and end is not None and step_days is not None:
+        out: list[str] = []
+        cur = start
+        while cur <= end:
+            out.append(cur.isoformat())
+            cur += dt.timedelta(days=step_days)
+        return out
+
+    found = list_snapshot_dates()
+    if not found:
+        print(
+            f"No snapshot/*.html files in {SNAPSHOT_DIR!r}. "
+            "Run capture_snapshots.py first.",
+            file=sys.stderr,
+        )
+    return found
+
+
+def parse_args(argv: list[str]) -> argparse.Namespace:
+    p = argparse.ArgumentParser(description="Export classified tree pixels to trees.csv.")
+    p.add_argument("--start", type=dt.date.fromisoformat, default=None)
+    p.add_argument("--end", type=dt.date.fromisoformat, default=None)
+    p.add_argument("--step", type=int, default=None, help="Days between dates (with --start/--end).")
+    return p.parse_args(argv)
+
+
 # --------------------------------------------------------------------------- #
 # Main
 # --------------------------------------------------------------------------- #
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv if argv is not None else sys.argv[1:])
+    if (args.start, args.end, args.step).count(None) not in (0, 3):
+        print("Pass all of --start, --end, and --step, or none of them.", file=sys.stderr)
+        return 2
+    if args.step is not None and args.step < 1:
+        print("--step must be >= 1", file=sys.stderr)
+        return 2
+
+    dates = dates_for_run(args.start, args.end, args.step)
+    if not dates:
+        return 1
+    print(f"Processing {len(dates)} date(s) …")
+
     extent = bbox_to_service_sr(BBOX)
     size = export_size(*extent)
     print(
@@ -257,7 +318,7 @@ def main() -> int:
     )
 
     all_rows: list[dict] = []
-    for date in DATES:
+    for date in dates:
         snapshot_path = snapshot_path_for_date(date)
         if not os.path.isfile(snapshot_path):
             print(f"Skipping {date}: no snapshot at {snapshot_path}")

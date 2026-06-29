@@ -1,0 +1,929 @@
+{
+  "controls": [
+    {
+      "name": "Sign In",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Expand menu",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Properties",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Styles",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Processing templates",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Effects",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Pop-ups",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Fields",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Add sketch",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "maptools",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Map tools",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Measurement",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Location",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Options",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Options",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Close",
+      "role": null,
+      "tag": "calcite-action"
+    },
+    {
+      "name": "Close",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Close",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Expand",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Options",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Options",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More details",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Collapse",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Options",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Collapse",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Options",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Normal",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "0%",
+      "role": "button",
+      "tag": "span"
+    },
+    {
+      "name": "Collapse",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Options",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Collapse",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Options",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Info",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Expand",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Options",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Add parameter",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Expand menu",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "adddata",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Add",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Browse layers",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Add layer from URL",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Create sketch layer",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Add media layer",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Layers",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Tables",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Basemap",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Legend",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Bookmarks",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Charts",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "file",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Save and open",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Save as",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "New map",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Open map",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Map properties",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "sharemap",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Share map",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Manage sharing",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Copy link to map",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Create custom link",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Embed map",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Create app",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Print",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Information (Indicator present)",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Options",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Options",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Close",
+      "role": null,
+      "tag": "calcite-action"
+    },
+    {
+      "name": "Close",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Close",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Options",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Options",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Land Cover Willamette Valley Hardwood Model",
+      "role": null,
+      "tag": "calcite-list-item"
+    },
+    {
+      "name": "Hide Land Cover Willamette Valley Hardwood Model",
+      "role": null,
+      "tag": "calcite-action"
+    },
+    {
+      "name": "Hide Land Cover Willamette Valley Hardwood Model",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Menu",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Options",
+      "role": null,
+      "tag": "calcite-action"
+    },
+    {
+      "name": "Menu",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Zoom to layer",
+      "role": null,
+      "tag": "calcite-action"
+    },
+    {
+      "name": "Zoom to layer",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Zoom to source resolution",
+      "role": null,
+      "tag": "calcite-action"
+    },
+    {
+      "name": "Zoom to source resolution",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Show properties",
+      "role": null,
+      "tag": "calcite-action"
+    },
+    {
+      "name": "Show properties",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Rename",
+      "role": null,
+      "tag": "calcite-action"
+    },
+    {
+      "name": "Rename",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Duplicate",
+      "role": null,
+      "tag": "calcite-action"
+    },
+    {
+      "name": "Duplicate",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Remove",
+      "role": null,
+      "tag": "calcite-action"
+    },
+    {
+      "name": "Remove",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "More",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Move to basemap",
+      "role": null,
+      "tag": "calcite-action"
+    },
+    {
+      "name": "Move to basemap",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Group",
+      "role": null,
+      "tag": "calcite-action"
+    },
+    {
+      "name": "Group",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Options",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Options",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Minimize",
+      "role": null,
+      "tag": "calcite-action"
+    },
+    {
+      "name": "Minimize",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Close",
+      "role": null,
+      "tag": "calcite-action"
+    },
+    {
+      "name": "Close",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Expand",
+      "role": null,
+      "tag": "calcite-action"
+    },
+    {
+      "name": "Height up",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Collapse",
+      "role": null,
+      "tag": "calcite-action"
+    },
+    {
+      "name": "Height down",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Zoom in",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Zoom out",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Search",
+      "role": "button",
+      "tag": "div"
+    },
+    {
+      "name": "Expand",
+      "role": null,
+      "tag": "calcite-action"
+    },
+    {
+      "name": "Expand",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Hide interface",
+      "role": null,
+      "tag": "calcite-action"
+    },
+    {
+      "name": "Hide interface",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Time",
+      "role": null,
+      "tag": "calcite-action"
+    },
+    {
+      "name": "Time",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Home",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Close",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Options",
+      "role": null,
+      "tag": "button"
+    },
+    {
+      "name": "Options",
+      "role": null,
+      "tag": "button"
+    }
+  ],
+  "tagCounts": {
+    "arcgis-expand": 1,
+    "arcgis-home": 1,
+    "arcgis-legend": 1,
+    "arcgis-legend-classic-element": 1,
+    "arcgis-legend-classic-view": 1,
+    "arcgis-map-config-tabs-manager": 1,
+    "arcgis-map-config-time-extent-visibility": 1,
+    "arcgis-scale-range-slider": 1,
+    "arcgis-time-zone-label": 1,
+    "arcgis-zoom": 1,
+    "calcite-action": 105,
+    "calcite-action-bar": 2,
+    "calcite-action-group": 11,
+    "calcite-action-menu": 28,
+    "calcite-block": 7,
+    "calcite-button": 12,
+    "calcite-combobox": 2,
+    "calcite-combobox-item": 345,
+    "calcite-combobox-item-group": 12,
+    "calcite-dropdown": 3,
+    "calcite-dropdown-group": 1,
+    "calcite-dropdown-item": 4,
+    "calcite-fab": 1,
+    "calcite-flow": 3,
+    "calcite-flow-item": 3,
+    "calcite-icon": 473,
+    "calcite-input-time-zone": 1,
+    "calcite-label": 5,
+    "calcite-link": 2,
+    "calcite-list": 1,
+    "calcite-list-item": 1,
+    "calcite-notice": 2,
+    "calcite-option": 4,
+    "calcite-panel": 5,
+    "calcite-popover": 30,
+    "calcite-select": 1,
+    "calcite-shell": 1,
+    "calcite-shell-panel": 4,
+    "calcite-split-button": 1,
+    "calcite-switch": 1,
+    "calcite-tab-nav": 1,
+    "calcite-tabs": 1,
+    "calcite-tooltip": 9,
+    "map-viewer-full-screen": 1,
+    "map-viewer-layer-switcher": 1
+  },
+  "timeish": [
+    {
+      "name": "",
+      "tag": "arcgis-scale-range-slider",
+      "value": null
+    },
+    {
+      "name": "Time",
+      "tag": "div",
+      "value": null
+    },
+    {
+      "name": "Time",
+      "tag": "article",
+      "value": null
+    },
+    {
+      "name": "Time",
+      "tag": "div",
+      "value": null
+    },
+    {
+      "name": "Time",
+      "tag": "header",
+      "value": null
+    },
+    {
+      "name": "Time",
+      "tag": "div",
+      "value": null
+    },
+    {
+      "name": "Time",
+      "tag": "div",
+      "value": null
+    },
+    {
+      "name": "",
+      "tag": "arcgis-map-config-time-extent-visibility",
+      "value": null
+    },
+    {
+      "name": "Time-based layer visibilityEnable time-based layer visibilit",
+      "tag": "calcite-label",
+      "value": null
+    },
+    {
+      "name": "Time-based layer visibilityEnable time-based layer visibilit",
+      "tag": "section",
+      "value": null
+    },
+    {
+      "name": "Enable time-based layer visibility to display the layer only",
+      "tag": "calcite-tooltip",
+      "value": null
+    },
+    {
+      "name": "Time-based layer visibilityEnable time-based layer visibilit",
+      "tag": "div",
+      "value": null
+    },
+    {
+      "name": "",
+      "tag": "arcgis-time-zone-label",
+      "value": null
+    },
+    {
+      "name": "",
+      "tag": "calcite-input-time-zone",
+      "value": "America/Los_Angeles"
+    },
+    {
+      "name": "Choose time zone.Los Angeles, United StatesCoordinated Unive",
+      "tag": "div",
+      "value": null
+    },
+    {
+      "name": "Choose time zone.Los Angeles, United States",
+      "tag": "div",
+      "value": null
+    },
+    {
+      "name": "Choose time zone.Los Angeles, United States",
+      "tag": "div",
+      "value": null
+    },
+    {
+      "name": "Choose time zone.",
+      "tag": "label",
+      "value": null
+    },
+    {
+      "name": "Choose time zone.",
+      "tag": "input",
+      "value": ""
+    },
+    {
+      "name": "Coordinated Universal Time (UTC)GMT-12GMT-11GMT-10GMT-9GMT-8",
+      "tag": "ul",
+      "value": null
+    },
+    {
+      "name": "Coordinated Universal Time (UTC)",
+      "tag": "li",
+      "value": 0
+    },
+    {
+      "name": "System Default Time",
+      "tag": "li",
+      "value": 0
+    },
+    {
+      "name": "Coordinated Universal Time (UTC)",
+      "tag": "div",
+      "value": null
+    },
+    {
+      "name": "Coordinated Universal Time (UTC)",
+      "tag": "div",
+      "value": null
+    },
+    {
+      "name": "Coordinated Universal Time (UTC)",
+      "tag": "li",
+      "value": 0
+    },
+    {
+      "name": "Coordinated Universal Time (UTC)",
+      "tag": "div",
+      "value": null
+    },
+    {
+      "name": "Coordinated Universal Time (UTC)",
+      "tag": "div",
+      "value": null
+    },
+    {
+      "name": "System Default Time",
+      "tag": "div",
+      "value": null
+    },
+    {
+      "name": "System Default Time",
+      "tag": "div",
+      "value": null
+    },
+    {
+      "name": "System Default Time",
+      "tag": "li",
+      "value": 0
+    },
+    {
+      "name": "System Default Time",
+      "tag": "div",
+      "value": null
+    },
+    {
+      "name": "System Default Time",
+      "tag": "div",
+      "value": null
+    },
+    {
+      "name": "Time",
+      "tag": "calcite-action",
+      "value": null
+    },
+    {
+      "name": "Time",
+      "tag": "div",
+      "value": null
+    },
+    {
+      "name": "Time",
+      "tag": "button",
+      "value": ""
+    },
+    {
+      "name": "Time",
+      "tag": "div",
+      "value": null
+    }
+  ],
+  "readiness": {
+    "datePickers": 0,
+    "htmlLen": 79619,
+    "layerFound": true,
+    "timeSlider": 0
+  }
+}
