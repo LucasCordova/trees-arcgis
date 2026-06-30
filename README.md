@@ -31,20 +31,28 @@ It runs headless Chrome in batches (with progress on stdout), optionally clears 
 
 ### 1. Capture HTML snapshots (Selenium)
 
-The script lives in `selenium/` which shadows the pip `selenium` package if you run from the repo root. Run it from `/tmp` (or anywhere outside the repo):
+The script lives in `selenium/` which shadows the pip `selenium` package if you run from the repo root. Run it with your **current working directory outside the repo** (e.g. macOS/Linux: `cd /tmp`; Windows: `cd %TEMP%`):
 
+**macOS / Linux:**
 ```bash
 cd /tmp
 python /path/to/trees-arcgis/selenium/capture_snapshots.py \
   --start 2024-01-01 --end 2024-03-01 --step 7 --headless --overwrite
 ```
 
+**Windows (cmd):**
+```cmd
+cd %TEMP%
+python C:\path\to\trees-arcgis\selenium\capture_snapshots.py --start 2024-01-01 --end 2024-03-01 --step 7 --headless --overwrite
+```
+
+(`up_and_up.py` handles this automatically — you only need the above if running capture by hand.)
+
 Output: `snapshot/<YYYY-MM-DD>.html`
 
-For debugging the Map Viewer UI (visible browser):
+For debugging the Map Viewer UI (visible browser), same cwd trick — `cd /tmp` or `cd %TEMP%`, then:
 
 ```bash
-cd /tmp
 python /path/to/trees-arcgis/selenium/capture_snapshots.py --debug
 ```
 
@@ -66,6 +74,7 @@ Output: `trees.csv` with columns `date`, `tree_type`, `class_value`, `latitude`,
 
 ## Notes
 
+- **Windows:** `up_and_up.py` uses the system temp folder (`%TEMP%`), not `/tmp`. You need Google Chrome installed; Selenium Manager fetches chromedriver.
 - Headless capture often fails WebGL on ArcGIS; `up_and_up.py` uses headless anyway. If batches fail, try capture without `--headless`.
 - Snapshots must include the layer time controls (~200KB+ HTML). Tiny files mean the map didn't load.
 - BBOX and class names are hardcoded in `scrape_trees.py` for a small Corvallis-ish window.

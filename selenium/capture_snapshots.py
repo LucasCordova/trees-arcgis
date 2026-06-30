@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Save ArcGIS Map Viewer HTML to snapshot/<date>.html for scrape_trees.py.
-# Run from outside the repo (e.g. /tmp) so this folder doesn't shadow pip selenium.
+# Run from outside the repo (system temp dir) so this folder doesn't shadow pip selenium.
 
 from __future__ import annotations
 

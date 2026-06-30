@@ -10,6 +10,7 @@ from __future__ import annotations
 import datetime as dt
 import subprocess
 import sys
+import tempfile
 import time
 from pathlib import Path
 
@@ -20,7 +21,8 @@ TREES_CSV = REPO_ROOT / "trees.csv"
 SNAPSHOT_DIR = REPO_ROOT / "snapshot"
 
 # Repo has a selenium/ folder that shadows the pip package if cwd is the repo.
-CAPTURE_CWD = "/tmp"
+# Use the OS temp dir (not /tmp — that path doesn't exist on Windows).
+CAPTURE_CWD = tempfile.gettempdir()
 
 # Snapshots per Chrome session before we restart the browser (memory leaks are real).
 SNAPSHOTS_PER_BATCH = 6
